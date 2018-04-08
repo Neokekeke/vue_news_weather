@@ -32,7 +32,8 @@ export default {
 .header{
     position: fixed;
     top: 0;
-    left: 0;
+    margin: 0 auto;
+    max-width: 800px;
     width: 100%;
     display: flex;
     align-items: center;

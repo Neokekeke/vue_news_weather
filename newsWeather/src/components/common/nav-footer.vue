@@ -32,7 +32,8 @@ export default {
 .footer{
     position: fixed;
     bottom: 0;
-    left: 0;
+    max-width: 800px;
+    margin: 0 auto;
     width: 100%;
     height: 55px;
     background-color: rgb(126, 122, 122);
