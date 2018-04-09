@@ -33,14 +33,15 @@ export default {
     position: fixed;
     top: 0;
     margin: 0 auto;
-    max-width: 800px;
+    max-width: 1024px;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 55px;
-    background-color: black;
+    background-color: rgb(255,51,51);
     line-height: 55px;
+    overflow: hidden;
 }
 
 .title{

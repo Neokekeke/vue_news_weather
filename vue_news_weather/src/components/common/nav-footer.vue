@@ -32,11 +32,11 @@ export default {
 .footer{
     position: fixed;
     bottom: 0;
-    max-width: 800px;
+    max-width: 1024px;
     margin: 0 auto;
     width: 100%;
     height: 55px;
-    background-color: rgb(126, 122, 122);
+    background-color: rgb(255,51,51);
 }
 .nav-foot{
     height: 100%;

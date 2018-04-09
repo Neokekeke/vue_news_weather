@@ -8,6 +8,9 @@ Vue.config.productionTip = false;
 // 全局代理地址
 global.Api_Proxy = "https://bird.ioliu.cn/v1/?url=";
 
+// 极速数据的appkey
+global.App_key = "43c41b07a67e828b";
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

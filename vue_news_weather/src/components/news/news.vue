@@ -2,6 +2,17 @@
 <template>
   <div id="news">
 
+      <!-- 新闻所有频道 -->
+      <div class="newsChannel">
+        <div class="channelBox">
+          <template v-for="channel in channels">
+            <div class="channel">{{channel}}</div>
+          </template>
+        </div>
+      </div>
+
+      <!-- 新闻频道对应详情 -->
+      <div class="newsBox">
       <template v-for="item in newsList">
         <div class="news-item">
           <!-- 左边是显示新闻缩略图片 -->
@@ -11,9 +22,11 @@
           <!-- 右边显示新闻部分简介 -->
             <div class="right-content">
                 <span class="newsTitle">{{item.title}}</span>
+                <span class="newsSource">{{item.source}}</span>
             </div>
         </div>
       </template>
+      </div>
 
   </div>
 </template>
@@ -25,8 +38,8 @@ import $ from 'jquery';
 export default {
   data () {
     return {
-      newsList : ''   // 新闻列表信息
-
+      newsList : '',   // 新闻列表信息
+      channels : '',   // 新闻所有频道
     };
   },
 
@@ -52,7 +65,15 @@ export default {
         error : err => {
           console.log(err);
         }
-     })
+     });
+
+     // axios加代理
+     axios.get(Api_Proxy + "http://api.jisuapi.com/news/channel?appkey=" + App_key).then(res => {
+       this.channels = res.data.result;
+       console.log(res.data.result);
+     }).catch(err => {
+       console.log(err);
+     });
 
   }
 
@@ -63,19 +84,27 @@ export default {
 #news{
   font-size: 0.8rem;
   color: rgb(230, 73, 11);
-  max-width: 800px;
-  width: 100%;
+  max-width: 1024px;
   position: fixed;
   top: 55px;
   bottom: 55px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.newsBox{
+  position: fixed;
+  top: 90px;
+  bottom: 55px;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .news-item{
   width: 95%;
   height: 111px;
-  margin: 0 auto;
-  padding: 10px 0 10px 0;
+  margin: 6px auto;
+  padding: 6px 0 10px 0;
   display: flex;
   border-bottom: 1px solid rgb(172, 171, 171);
 }
@@ -84,14 +113,48 @@ export default {
   width: 100%;
   height: 100%;
   float: left;
-  overflow: hidden;
 }
 
 .newsTitle{
   font-size: 1rem;
   float: left;
   color: black;
-  overflow: hidden;
+}
+
+.newsSource{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: black;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/* 新闻频道样式 */
+.newsChannel{
+  position: absolute;
+  top: 0;
+  max-width: 1024px;
+  width: 100vw;
+  height: 35px;
+  background-color: white;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  border-bottom: 1px solid;
+}
+
+.channelBox{
+  width: 175vw;
+  height: 35px;
+}
+
+.channel{
+  text-align: center;
+  color: black;
+  font-size: 0.8rem;
+  margin: 0 1%;   /* 这里的边距也必须是百分比值 */
+  line-height: 35px;
+  width: 9vw;
+  float: left;
 }
 
 .left-content{
@@ -101,6 +164,7 @@ export default {
 
 .right-content{
   flex: 6;
+  position: relative;
 }
 
 
