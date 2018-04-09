@@ -96,6 +96,8 @@ export default {
   position: fixed;
   top: 90px;
   bottom: 55px;
+  max-width: 1024px;
+  width: 100%;
   overflow-y: auto;
   overflow-x: hidden;
 }

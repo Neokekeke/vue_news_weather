@@ -4,6 +4,7 @@
 
     <div class="nav-foot">
 
+        <router-link to="/home/movie" class="common movie">电影</router-link>
         <router-link to="/home/news" class="common news">新闻</router-link>
         <router-link to="/home/weather" class="common weather">天气</router-link>
 
@@ -61,6 +62,12 @@ export default {
 }
 
 .weather{
+  flex: 1;
+  border: none;
+  background-color: transparent;
+}
+
+.movie{
   flex: 1;
   border: none;
   background-color: transparent;

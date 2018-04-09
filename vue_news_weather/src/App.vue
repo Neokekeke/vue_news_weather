@@ -14,7 +14,7 @@ export default {
 
 <style>
 html{
-  font-size: 20px;
+  
 }
 
 *{
@@ -25,6 +25,7 @@ html{
 body{
     max-width: 1024px;
     margin: 0 auto;
+    position: relative;
 }
 
 #app {
