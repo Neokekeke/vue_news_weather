@@ -10,9 +10,9 @@
       </div>
     </div>
 
-    <keep-alive>
-       <router-view></router-view>
-    </keep-alive>
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
 
   </div>
 </template>
@@ -103,6 +103,13 @@ ul li{
 
 .router-link-active{
   border-bottom: 1.5px solid white;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s
+}
+.fade-enter, .fade-leave-active {
+  opacity: 0
 }
 
 </style>

@@ -62,6 +62,9 @@ export default {
 
 </script>
 <style scoped>
+ul{
+  list-style: none;
+}
 
 .movie{
   position: fixed;
@@ -95,11 +98,17 @@ export default {
 
 .left-content{
   flex: 1;
-  margin: 0 1% 0 0;
+  margin: 0 5% 0 0;
 }
 
 .right-content{
   flex: 9;
+}
+
+.right-content p{
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 20px 0;
 }
 
 .img{
