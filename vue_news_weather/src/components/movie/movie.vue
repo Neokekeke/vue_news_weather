@@ -42,10 +42,6 @@ export default {
     };
   },
   methods: {
-    warp(index){
-      this.currentIndex = index;
-      console.log(index);
-    }
   }
 }
 
@@ -105,11 +101,5 @@ ul li{
   border-bottom: 1.5px solid white;
 }
 
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s
-}
-.fade-enter, .fade-leave-active {
-  opacity: 0
-}
 
 </style>

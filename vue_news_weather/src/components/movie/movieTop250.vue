@@ -64,7 +64,10 @@ export default {
   methods: {
     openDetails(id){
       this.$router.push({
-        path :
+        name : 'movieDetail',
+        params : {
+          id : id
+        }
       })
     }
   }
@@ -112,11 +115,24 @@ ul{
 }
 
 .right-content{
-  flex: 5;
+  flex: 8;
 }
 
 .detail{
-  flex: 4;
+  float: right;
+  width: 50px;
+  margin: 30px 1% 30px 0;
+}
+
+.detail button{
+  border: none;
+  background-color: rgb(223, 51, 51);
+  height: 100px;
+  color: white;
+}
+
+.detail button:hover{
+  background-color: rgb(231, 89, 89);
 }
 
 .right-content p{

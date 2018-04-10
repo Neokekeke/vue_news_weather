@@ -7,10 +7,12 @@ import movie from '../components/movie/movie.vue';
 import movieTop250 from '../components/movie/movieTop250';
 import movieHot from '../components/movie/movieHot';
 import movieComing from '../components/movie/movieComing';
+import movieDetail from '../components/movie/movieDetail';
 
 Vue.use(Router)
 
 export default new Router({
+  mode: "history",
   routes: [
     {
       path: '/home',
@@ -50,6 +52,13 @@ export default new Router({
           component: weather
         }
       ]
+    },
+    { 
+      // params：/router1/:id ，/router1/123，/router1/789 ,这里的id叫做params
+      // query：/router1?id=123 ,/router1?id=456 ,这里的id叫做query。
+      path: '/movieDetails', 
+      name: 'movieDetail',
+      component: movieDetail
     }
   ]
 })
