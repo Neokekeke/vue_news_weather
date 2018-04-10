@@ -20,6 +20,10 @@
                 </ul>
             </div>
 
+            <div class="detail">
+              <button class="btn" @click="openDetails(movie.id)">影片详情页</button>
+            </div>
+
             </div>
         </template>
       </div>
@@ -57,7 +61,13 @@ export default {
 
   },
 
-  methods: {}
+  methods: {
+    openDetails(id){
+      this.$router.push({
+        path :
+      })
+    }
+  }
 }
 
 </script>
@@ -102,7 +112,11 @@ ul{
 }
 
 .right-content{
-  flex: 9;
+  flex: 5;
+}
+
+.detail{
+  flex: 4;
 }
 
 .right-content p{
