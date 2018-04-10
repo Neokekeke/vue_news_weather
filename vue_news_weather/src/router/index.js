@@ -4,6 +4,9 @@ import Home from '../views/home.vue';
 import news from '../components/news/news.vue';
 import weather from '../components/weather/weather.vue';
 import movie from '../components/movie/movie.vue';
+import movieTop250 from '../components/movie/movieTop250';
+import movieHot from '../components/movie/movieHot';
+import movieComing from '../components/movie/movieComing';
 
 Vue.use(Router)
 
@@ -17,7 +20,24 @@ export default new Router({
         {
           path: 'movie',
           name: '电影',
-          component: movie
+          component: movie,
+          children:[
+            {
+              path: 'top250',
+              name: 'Top250',
+              component: movieTop250
+            },
+            {
+              path: 'movieHot',
+              name: '正在热映',
+              component: movieHot
+            },
+            {
+              path: 'movieComing',
+              name: '即将上映',
+              component: movieComing
+            }
+          ]
         },
         {
           path: 'news',

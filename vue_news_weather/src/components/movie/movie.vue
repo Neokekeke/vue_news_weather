@@ -4,71 +4,60 @@
 
     <!-- 电影top250，正在热映和即将上映 -->
     <div class="tags">
-      <div class="common">Top250</div>
-      <div class="common">正在热映</div>
-      <div class="common">即将上映</div>
-    </div>
-
-    <!-- 电影分类显示 -->
-    <div class="movie">
-      <div class="movie-box">
-        <template v-for="movie in top250">
-           <div class="movie-item">
-            <div class="left-content">
-                <img class="img" :src="movie.images.small"/>
-            </div>
-
-            <div class="right-content">
-                <p>{{movie.title}}</p>
-                <ul>
-                  <li>{{movie.genres.join(',')}}</li>
-                  <li>{{movie.year}}年</li>
-                  <li>导演：{{movie.directors[0].name}}</li>
-                  <li>评分：{{movie.rating.average}}</li>
-                </ul>
-
-            </div>
-
-            </div>
-        </template>
-
+      <div class="common" v-for="(data , index) in navData">
+        <!-- 这里动态绑定router-link to属性 -->
+        <router-link :to="data.path" class="nav" exact>{{data.title}}</router-link>
       </div>
     </div>
 
+    <keep-alive>
+       <router-view></router-view>
+    </keep-alive>
 
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+import $ from 'jquery';
 export default {
   data () {
     return {
-       top250 : '' ,
-       hotMovie : '',
-       comingMovie : ''
+      navData : [
+        {
+          path : '/home/movie/top250',
+          title : 'Top250'
+
+        },
+        {
+          path : '/home/movie/movieHot',
+          title : '正在热映'
+        },
+        {
+          path : '/home/movie/movieComing',
+          title : '即将上映'
+        }
+      ],
+      currentIndex : 0
     };
   },
-
-  computed: {},
-
-  mounted() {
-    axios.get(Api_Proxy + "https://api.douban.com/v2/movie/top250").then(res=>{
-      this.top250 = res.data.subjects;
-      console.log(res.data.subjects);
-    }).catch(err=>{
-      console.log(err);
-    })
-  },
-
   methods: {
-
+    warp(index){
+      this.currentIndex = index;
+      console.log(index);
+    }
   }
-
 }
 
 </script>
 <style scoped>
+button{
+  border: none;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+}
+
 ul{
   list-style: none;
   margin: 0 auto;
@@ -106,48 +95,14 @@ ul li{
   line-height: 50px;
 }
 
-.movie{
-  position: fixed;
-  top: 90px;
-  bottom: 55px;
-  max-width: 1024px;
-  width: 100vw;
+.nav{
+  color: white;
+  font-size: 0.9rem;
+  text-decoration: none;
 }
 
-.movie-box{
-  position: absolute;
-  top: 0;
-  left: 0;
-  max-width: 1024px;
-  width: 100vw;
-  height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-.movie-item{
-  display: flex;
-  justify-content: center;
-  width: 95vw;
-  height: 150px;
-  margin: 30px 0 30px 0;
-  border-bottom: 1px solid;
-  padding: 6px 0 6px 0;
-  margin: 3px auto;
-}
-
-.left-content{
-  flex: 1;
-  margin: 0 1% 0 0;
-}
-
-.right-content{
-  flex: 9;
-}
-
-.img{
-  width: 100px;
-  height: 150px;
+.router-link-active{
+  border-bottom: 1.5px solid white;
 }
 
 </style>

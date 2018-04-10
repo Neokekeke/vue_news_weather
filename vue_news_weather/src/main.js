@@ -5,7 +5,7 @@ import Mock from '../src/mock/mock.js';
 
 Vue.config.productionTip = false;
 
-// 全局代理地址
+// 全局代理地址，适用于axios跨域
 global.Api_Proxy = "https://bird.ioliu.cn/v1/?url=";
 
 // 极速数据的appkey
@@ -18,3 +18,6 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+
+// 路由重定向
+router.push('/home/movie/top250');
