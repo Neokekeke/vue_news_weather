@@ -122,6 +122,7 @@ ul{
   background-color: rgb(223, 51, 51);
   height: 100px;
   color: white;
+  cursor: pointer;
 }
 
 .detail button:hover{

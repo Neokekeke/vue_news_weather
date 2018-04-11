@@ -20,6 +20,10 @@
                 </ul>
             </div>
 
+            <div class="detail">
+              <button class="btn" @click="openDetails(movie.id)">影片详情页</button>
+            </div>
+
             </div>
         </template>
       </div>
@@ -49,7 +53,17 @@ export default {
 
   },
 
-  methods: {}
+  methods: {
+    openDetails(id){
+      this.$router.push({
+        name : 'movieDetail',
+        params : {
+          id : id
+        },
+        query : {} // 这里带的是传参
+      });
+    }
+  }
 }
 
 </script>
@@ -95,6 +109,23 @@ ul{
 
 .right-content{
   flex: 9;
+}
+
+.detail{
+  float: right;
+  width: 50px;
+  margin: 30px 1% 30px 0;
+}
+
+.detail button{
+  border: none;
+  background-color: rgb(223, 51, 51);
+  height: 100px;
+  color: white;
+}
+
+.detail button:hover{
+  background-color: rgb(231, 89, 89);
 }
 
 .right-content p{

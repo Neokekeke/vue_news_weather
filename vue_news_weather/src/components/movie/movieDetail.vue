@@ -3,10 +3,7 @@
 
    <div class="outter">
 
-    <div class="navBack">
-         返回
-         <span>{{movieData.title}}</span>
-    </div>
+    <nav-back :movieDesc="movieData.title"></nav-back>
 
     <!-- 电影详情介绍 -->
     <div class="container">
@@ -16,11 +13,10 @@
         </div>
         <div class="movieDesc">
             {{movieData.summary}}
-
-
-        </div>  <p>
-              {{movieData.directors[0].name}}
-            </p>
+        </div>
+        <p>
+            <i>导演：{{movieData.directors[0].name}}</i>
+        </p>
       </div>
     </div>
 
@@ -48,7 +44,7 @@ export default {
     ajax.jqGet(this.detailUrl).then(res => {
       this.movieData = res;
       console.log(res);
-    })
+    });
 
   },
 
@@ -61,21 +57,6 @@ export default {
   position: relative;
 }
 
-.navBack{
-  position: fixed;
-  top: 0;
-  height: 50px;
-  max-width: 1024px;
-  width: 100%;
-  background-color: lightcoral;
-  z-index: 100;   /* 这里是关键避免absolute，覆盖fixed */
-}
-
-.navBack span{
-  text-align: center;
-  line-height: 50px;
-}
-
 /* 隐藏滚动条的精髓是div高度要定，宽度可以百分比，针对y轴，x轴亦然 */
 .container{
   max-width: 1024px;
@@ -84,8 +65,14 @@ export default {
   position: relative;
   overflow: hidden;
   margin: 0 auto;
-  top: 50px;
+  top: 60px;
   z-index: 99;
+}
+
+.container p{
+  text-align: center;
+  margin: 10% 0 5% 0;
+  font-weight: 600;
 }
 
 .box{
@@ -105,6 +92,10 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.movieDesc{
+  margin: 2% auto;
 }
 
 .moviePic img{
