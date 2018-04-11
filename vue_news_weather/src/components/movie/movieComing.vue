@@ -112,7 +112,8 @@ ul{
 }
 
 .detail{
-  float: right;
+  position: absolute;
+  right: 1%;
   width: 50px;
   margin: 30px 1% 30px 0;
 }

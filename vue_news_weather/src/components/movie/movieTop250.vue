@@ -42,15 +42,31 @@ export default {
     return {
 
       movieList : '',
-      top250url : 'https://api.douban.com/v2/movie/top250'
-
+      top250url : 'https://api.douban.com/v2/movie/top250',
+      itemHeight : '',
+      itemScrollTop : ''
     };
   },
-  mounted() {
 
+  computed : {
+
+  },
+
+  watch: {
+    itemScrollTop(newVal , oldVal){
+      console.log(newVal);
+      console.log(oldVal);
+    }
+  },
+
+  mounted() {
       ajax.jqGet(this.top250url).then(res => {
         this.movieList = res.subjects;
       });
+      this.itemHeight = this.$el.querySelector('.movie-box').offsetHeight;
+      this.itemScrollTop = this.$el.querySelector('.movie-box').scrollTop;
+      console.log("offserHeight：" , this.itemHeight);
+      console.log("scrollTop：" , this.itemScrollTop);
   },
 
   methods: {
@@ -62,6 +78,7 @@ export default {
         },
         query : {} // 这里带的是传参
       });
+        console.log("scrollTop：" , this.itemScrollTop);
     }
   }
 }
@@ -112,7 +129,8 @@ ul{
 }
 
 .detail{
-  float: right;
+  position: absolute;
+  right: 1%;
   width: 50px;
   margin: 30px 1% 30px 0;
 }

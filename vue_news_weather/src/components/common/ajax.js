@@ -7,7 +7,7 @@ export default {
 
   // axios GET
   axiosGet : function(url , dataList){
-    
+
       return new Promise((resolve , reject) => {
         // axios本来就是用了promise，外层再套一层。。。
         axios.get(Api_Proxy + url).then(res => {
@@ -22,13 +22,14 @@ export default {
   },
 
   // jquery GET
-  jqGet : function(url){
+  jqGet : function(url , data){
 
     return new Promise((resolve , reject) => {
         // 用到了jquery ajax , 不能同步的异步 ，此方法不可用
         $.ajax({
           url : url,
           type : 'get',
+          data : data,
           dataType : "jsonp",
           success : res => {
             resolve(res);

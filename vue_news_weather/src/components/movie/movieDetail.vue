@@ -17,6 +17,9 @@
         <p>
             <i>导演：{{movieData.directors[0].name}}</i>
         </p>
+        <p>
+          {{dataq}}
+        </p>
       </div>
     </div>
 
@@ -31,7 +34,8 @@ export default {
   data () {
     return {
       movieData : '',
-      detailUrl : "https://api.douban.com//v2/movie/subject/" + this.$route.params.id
+      detailUrl : "https://api.douban.com//v2/movie/subject/" + this.$route.params.id,
+      dataq: ''
     };
   },
 
@@ -45,7 +49,6 @@ export default {
       this.movieData = res;
       console.log(res);
     });
-
   },
 
   methods: {}
