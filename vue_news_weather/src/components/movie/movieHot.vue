@@ -30,28 +30,22 @@
 <script>
 import axios from 'axios';
 import $ from 'jquery';
+import ajax from '../common/ajax.js';
+
 export default {
   data () {
     return {
 
-         movieList : ''
+         movieList : '',
+         hotUrl : "https://api.douban.com/v2/movie/in_theaters"
 
     };
   },
   mounted() {
 
-    $.ajax({
-        url : 'https://api.douban.com/v2/movie/in_theaters',
-        type : 'get',
-        dataType : "jsonp",
-        success : res => {
-          this.movieList = res.subjects;
-          console.log("正在热映中",this.movieList);
-        },
-        error : err => {
-          console.log(err);
-        }
-     });
+      ajax.jqGet(this.hotUrl).then(res => {
+        this.movieList = res.subjects;
+      });
 
   },
 

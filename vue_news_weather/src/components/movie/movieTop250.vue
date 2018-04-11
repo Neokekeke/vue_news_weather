@@ -35,30 +35,22 @@
 <script>
 import axios from 'axios';
 import $ from 'jquery';
+import ajax from '../common/ajax.js';
+
 export default {
   data () {
     return {
 
-      movieList : ''
+      movieList : '',
+      top250url : 'https://api.douban.com/v2/movie/top250'
 
     };
   },
   mounted() {
 
-     // 用到了jquery ajax
-     $.ajax({
-        url : 'https://api.douban.com/v2/movie/top250',
-        type : 'get',
-        dataType : "jsonp",
-        success : res => {
-          this.movieList = res.subjects;
-          console.log("top250",this.movieList);
-        },
-        error : err => {
-          console.log(err);
-        }
-     });
-
+      ajax.jqGet(this.top250url).then(res => {
+        this.movieList = res.subjects;
+      });
   },
 
   methods: {
@@ -67,8 +59,9 @@ export default {
         name : 'movieDetail',
         params : {
           id : id
-        }
-      })
+        },
+        query : {} // 这里带的是传参
+      });
     }
   }
 }

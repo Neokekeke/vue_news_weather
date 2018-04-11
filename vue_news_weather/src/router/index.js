@@ -23,6 +23,7 @@ export default new Router({
           path: 'movie',
           name: '电影',
           component: movie,
+          redirect: 'movie/top250',
           children:[
             {
               path: 'top250',
@@ -53,10 +54,10 @@ export default new Router({
         }
       ]
     },
-    { 
+    {
       // params：/router1/:id ，/router1/123，/router1/789 ,这里的id叫做params
       // query：/router1?id=123 ,/router1?id=456 ,这里的id叫做query。
-      path: '/movieDetails', 
+      path: '/movieDetails',
       name: 'movieDetail',
       component: movieDetail
     }

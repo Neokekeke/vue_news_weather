@@ -11,13 +11,13 @@
 </template>
 
 <script>
-import axios from 'axios';
-import $ from 'jquery';
+import ajax from '../common/ajax.js';
+
 export default {
   data () {
     return {
-      movieID : this.$route.params.id,
-      movieData : ''
+      movieData : '',
+      detailUrl : "https://api.douban.com//v2/movie/subject/" + this.$route.params.id
     };
   },
 
@@ -26,14 +26,11 @@ export default {
   computed: {},
 
   mounted() {
-    console.log("id" ,this.$route.params.id);
-
-    axios.get(Api_Proxy + "https://api.douban.com//v2/movie/subject/" + this.movieID).then(res => {
-      this.movieData = res.data;
-      console.log(res.data);
-    }).catch(err =>{
-      console.log(err);
-    });
+    console.log(this.$route.params.id);
+    ajax.jqGet(this.detailUrl).then(res => {
+      this.movieData = res;
+      console.log(res);
+    })
 
   },
 
